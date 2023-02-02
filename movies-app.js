@@ -8,7 +8,7 @@ const movieURL = "https://tulip-marsh-cake.glitch.me/movies";
 //requests all data from the json database
 let movies = undefined;
 
-//this function
+//this function pulls the data from the database each time it is called
 function refreshMovieData() {
     fetch(movieURL)
         .then(function (response) {
@@ -21,6 +21,7 @@ function refreshMovieData() {
 }
 refreshMovieData();
 
+//this function is used to make the movies and display them on the page from the database
 function makeMovies() {
     var movieHTML = '';
     for (let i = 0; i < movies.length; i++) {
@@ -50,11 +51,11 @@ function addMovie() {
         body: JSON.stringify(movieObj),
     };
     fetch(movieURL, addedOptions)
-        .then(response => {
-            console.log(response);
-            refreshMovieData();
+        .then(() => {
+            // console.log(response);
+            refreshMovieData(); //we did this here so that we can refresh from the database each time
         }) /* review was created successfully */
         .catch(error => console.error(error));
 }
 
-$('#submit-movie').click(addMovie);
+$('#submit-movie').click(addMovie); //added event listener to add to HTML on submit button
