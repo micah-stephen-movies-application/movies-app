@@ -1,4 +1,4 @@
-//loading gif before page loads
+// //loading gif before page loads
 $(window).on('load', function () {
     $('#loading').hide();
 })
@@ -19,6 +19,14 @@ fetch("https://tulip-marsh-cake.glitch.me/movies")
                         </div>`
         $('#movie-table-1').append(movieHTML);
     }
+    //add movies
+    const userMovie = {
+        title: $("add-movie-name").focus().val(),
+        rating: $(),
+        id: data.length + 1
+    };
+    console.log(userMovie);
+
 });
 
 

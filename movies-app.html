@@ -7,17 +7,47 @@
     <link rel="stylesheet" href="movies-app.css">
 </head>
 <body>
-<div id="loading">
-    <img id="loading-image" src="loading-gif.gif" alt="Loading..." />
-</div>
+<!--<div id="loading">-->
+<!--    <img id="loading-image" src="loading-gif.gif" alt="Loading..." />-->
+<!--</div>-->
 <div id="movie-table-1"></div>
-
-
-
+<div class="container">
+    <div id="add-movie" class="row p-0"></div>
+    <div class="container-fluid mx-0 p-2">
+        <h3 class="my-2 font-pacifico">Add Movie</h3>
+        <form id="form-add-movie" class="row g-3">
+            <!--				<label for="add-coffee-roast" class="form-label">Roast</label>-->
+            <div class="col-12 col-md-3 col-lg-2">
+                <input id="add-movie-name" type="text" class="form-control" placeholder="Movie Name">
+            </div>
+            <div class="col-12 col-md-3 col-lg-2">
+                <select name="roast-add" id="add-coffee-roast" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="col">
+                <button id="submit-movie" type="button" class="btn btn-light">submit movie
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="d-none" style="text-align: center">
+    <button id="remove-local-storage" class="btn btn-warning">Delete Local Storage</button>
+</div>
+<!--//JQUERY SCRIPTS-->
 <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
 <script src="movies-app.js"></script>
-
 </body>
 </html>
