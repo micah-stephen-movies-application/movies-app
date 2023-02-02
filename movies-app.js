@@ -63,8 +63,8 @@ $('#submit-movie').click(addMovie); //added event listener to add to HTML on sub
 
 
 //function that deletes the specified movie from the page
-function deleteMovie() {
-    let deletedMovieURL = `https://tulip-marsh-cake.glitch.me/movies/${movies.id}`;
+function deleteMovie(buttonID) {
+    let deletedMovieURL = `https://tulip-marsh-cake.glitch.me/movies/${buttonID}`;
     const deleteOptions = {
         method: 'DELETE',
         headers: {
@@ -75,12 +75,15 @@ function deleteMovie() {
     fetch(deletedMovieURL, deleteOptions)
         .then((response) => {
             // console.log(response);
-            refreshMovieData(response); //we did this here so that we can refresh from the database each time
+            refreshMovieData();
+            console.log((response)); //we did this here so that we can refresh from the database each time
         })
         .catch(error => console.error(error));
 }
 
 $('#movie-table-1').on("click", "button.delete-btn", function () {
     var buttonID = $(this).attr("data-id");
+    deleteMovie(buttonID);
+    // console.log(buttonID)
 });
 // trying to mess around with the delete movie function
