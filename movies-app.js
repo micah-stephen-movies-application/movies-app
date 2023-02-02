@@ -19,17 +19,18 @@ function refreshMovieData() {
         makeMovies();
     });
 }
+
 refreshMovieData();
 
 //this function is used to make the movies and display them on the page from the database
 function makeMovies() {
     var movieHTML = '';
     for (let i = 0; i < movies.length; i++) {
-        movieHTML += `
-                        <div>
+        movieHTML += `<div>
                         <div>${movies[i].title}</div>
                         <div>${movies[i].rating}</div>
-                        </div>`
+                    </div>
+                        <button class="delete-btn" data-id="${movies[i].id}"> Delete Movie</button>`
         $('#movie-table-1').html(movieHTML);
     }
 }
@@ -51,11 +52,34 @@ function addMovie() {
         body: JSON.stringify(movieObj),
     };
     fetch(movieURL, addedOptions)
-        .then(() => {
+        .then((response) => {
             // console.log(response);
-            refreshMovieData(); //we did this here so that we can refresh from the database each time
-        }) /* review was created successfully */
+            refreshMovieData(response); //we did this here so that we can refresh from the database each time
+        })
         .catch(error => console.error(error));
 }
 
 $('#submit-movie').click(addMovie); //added event listener to add to HTML on submit button
+
+
+//function that deletes the specified movie from the page
+function deleteMovie() {
+    let deletedMovieURL = `https://tulip-marsh-cake.glitch.me/movies/${movies.id}`;
+    const deleteOptions = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify(refreshMovieData),
+    };
+    fetch(deletedMovieURL, deleteOptions)
+        .then((response) => {
+            // console.log(response);
+            refreshMovieData(response); //we did this here so that we can refresh from the database each time
+        })
+        .catch(error => console.error(error));
+}
+
+$('#movie-table-1').on("click", "button.delete-btn", function () {
+    var buttonID = $(this).attr("data-id");
+});
