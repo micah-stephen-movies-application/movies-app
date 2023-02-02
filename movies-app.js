@@ -83,3 +83,4 @@ function deleteMovie() {
 $('#movie-table-1').on("click", "button.delete-btn", function () {
     var buttonID = $(this).attr("data-id");
 });
+// trying to mess around with the delete movie function
