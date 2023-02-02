@@ -1,32 +1,60 @@
-// //loading gif before page loads
+"use strict"
+//loading gif before page loads
 $(window).on('load', function () {
     $('#loading').hide();
 })
 
+const movieURL = "https://tulip-marsh-cake.glitch.me/movies";
 //requests all data from the json database
-fetch("https://tulip-marsh-cake.glitch.me/movies")
-    .then(function (response) {
-        return response.json();
-    }).then(function (data) {
-    console.log(data);
-    // this adds the current data to the page
+let movies = undefined;
+
+//this function
+function refreshMovieData() {
+    fetch(movieURL)
+        .then(function (response) {
+            return response.json();
+        }).then(function (data) {
+        // console.log(data);
+        movies = data;
+        makeMovies();
+    });
+}
+refreshMovieData();
+
+function makeMovies() {
     var movieHTML = '';
-    for (let i = 0; i < data.length; i++) {
-        movieHTML = `
+    for (let i = 0; i < movies.length; i++) {
+        movieHTML += `
                         <div>
-                        <div>${data[i].title}</div>
-                        <div>${data[i].rating}</div>
+                        <div>${movies[i].title}</div>
+                        <div>${movies[i].rating}</div>
                         </div>`
-        $('#movie-table-1').append(movieHTML);
+        $('#movie-table-1').html(movieHTML);
     }
-    //add movies
-    const userMovie = {
-        title: $("add-movie-name").focus().val(),
-        rating: $(),
-        id: data.length + 1
+}
+
+//function that adds movies to the page when the submit button is clicked
+function addMovie() {
+    //created movie object based on user input
+    const movieObj = {
+        title: $('#add-movie-name').focus().val(),
+        rating: $('#add-movie-rating2').focus().val(),
+        id: movies.length + 1
     };
-    console.log(userMovie);
 
-});
+    const addedOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(movieObj),
+    };
+    fetch(movieURL, addedOptions)
+        .then(response => {
+            console.log(response);
+            refreshMovieData();
+        }) /* review was created successfully */
+        .catch(error => console.error(error));
+}
 
-
+$('#submit-movie').click(addMovie);

@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="movies-app.js"></script>
     <link rel="stylesheet" href="movies-app.css">
 </head>
 <body>
@@ -18,25 +17,17 @@
         <form id="form-add-movie" class="row g-3">
             <!--				<label for="add-coffee-roast" class="form-label">Roast</label>-->
             <div class="col-12 col-md-3 col-lg-2">
+                <label for="add-movie-name"></label>
                 <input id="add-movie-name" type="text" class="form-control" placeholder="Movie Name">
             </div>
+
             <div class="col-12 col-md-3 col-lg-2">
-                <select name="roast-add" id="add-coffee-roast" class="form-control">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
+                <label for="add-movie-rating2"></label>
+                <input id="add-movie-rating2" type="text" class="form-control" placeholder="Movie Rating 1-10">
             </div>
+
             <div class="col">
-                <button id="submit-movie" type="button" class="btn btn-light">submit movie
-                </button>
+                <button id="submit-movie" type="button" class="btn btn-light">submit movie</button>
             </div>
         </form>
     </div>
