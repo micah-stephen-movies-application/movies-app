@@ -1,18 +1,24 @@
-fetch("https://tulip-marsh-cake.glitch.me/movies")
-.then(function(response){
-    return response.json();
-}).then(function(data){
-    console.log(data);
+//loading gif before page loads
+$(window).on('load', function () {
+    $('#loading').hide();
 })
-$(document).ready(function () {
-    $('body').append('<div style="" id="loadingDiv"><div class="loader">Loading...</div></div>');
-    $(window).on('load', function () {
-        setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
-    });
-    function removeLoader() {
-        $("#loadingDiv").fadeOut(500, function () {
-            // fadeOut complete. Remove the loading div
-            $("#loadingDiv").remove(); //makes page more lightweight
-        });
+
+//requests all data from the json database
+fetch("https://tulip-marsh-cake.glitch.me/movies")
+    .then(function (response) {
+        return response.json();
+    }).then(function (data) {
+    console.log(data);
+    // this adds the current data to the page
+    var movieHTML = '';
+    for (let i = 0; i < data.length; i++) {
+        movieHTML = `
+                        <div>
+                        <div>${data[i].title}</div>
+                        <div>${data[i].rating}</div>
+                        </div>`
+        $('#movie-table-1').append(movieHTML);
     }
 });
+
+
