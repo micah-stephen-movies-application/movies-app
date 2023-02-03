@@ -29,36 +29,40 @@
                         <form id="form-add-movie">
 
                             <div class="text-center m-2">
-                                <label for="add-movie-name">Insert the title of the movie you would like to add</label>
+                                <label for="add-movie-name">Title</label>
                                 <input id="add-movie-name" type="text" class="form-control text-center"
                                        placeholder="Movie Title">
                             </div>
 
                             <div class="text-center m-2">
-                                <label for="add-movie-rating2">Rate this movie on a scale of 1 to 10</label>
+                                <label for="add-movie-rating2">Rating on a scale from 1 to 10</label>
                                 <input id="add-movie-rating2" type="text" class="form-control text-center"
                                        placeholder="Movie Rating 1-10">
                             </div>
 
                             <div class="d-flex justify-content-center m-2">
-                                <button id="submit-movie" type="button" class="btn btn-warning add-your-movie-button">Add Your Movie!</button>
+                                <button id="submit-movie" type="button" class="btn btn-warning add-your-movie-button">
+                                    Add Your Movie!
+                                </button>
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+                    <!--                    <div class="modal-footer">-->
+                    <!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                    <!--                    </div>-->
                 </div>
             </div>
         </div>
     </nav>
 </header>
 <main>
-    <div id="loading">
-        <img id="loading-image" src="loading-gif.gif" alt="Loading..."/>
-    </div>
+    <div>
+        <div id="loading">
+            <img id="loading-image" src="loading-gif.gif" alt="Loading..."/>
+        </div>
 
-    <div id="movie-table-1" class="container d-flex flex-wrap justify-content-evenly"></div>
+        <div id="movie-table-1" class="container d-flex flex-wrap justify-content-evenly"></div>
+    </div>
 </main>
 <!--//JQUERY SCRIPTS-->
 <script src="https://code.jquery.com/jquery-3.6.3.js"
