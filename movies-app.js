@@ -30,8 +30,9 @@ function makeMovies() {
                         <img src="" alt="" class="card-img-top">
                         <div class="card-body d-flex flex-wrap flex-column justify-content-center">
                             <div class="row">
-                                <h3 class="card-title text-white text-center">${movies[i].title}</h3>
-                                <div class="card-text text-white text-center fs-4">Rating: ${movies[i].rating} ★</div>
+                                <h3 class="card-title text-black text-center">${movies[i].title}</h3>
+                                <div class="card-text text-black text-center fs-4">Rating: ${movies[i].rating} ★</div>
+                                <i class="fa-solid fa-ticket ticket text-center"></i>
                             </div>
                             <div class="mt-auto d-flex">
                                 <button class="edit-btn" data-id="${movies[i].id}" data-bs-toggle="modal" data-bs-target="#editMovieModal"><i class="edit-icon fa-solid fa-pen-to-square"></i></button>
