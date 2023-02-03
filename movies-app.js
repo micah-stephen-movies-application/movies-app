@@ -76,7 +76,6 @@ function deleteMovie(buttonID) {
         headers: {
             'Content-Type': 'application/json',
         },
-        // body: JSON.stringify(refreshMovieData),
     };
     fetch(deletedMovieURL, deleteOptions)
         .then((response) => {
@@ -92,4 +91,27 @@ $('#movie-table-1').on("click", "button.delete-btn", function () {
     deleteMovie(buttonID);
     // console.log(buttonID)
 });
-// trying to mess around with the delete movie function
+
+//function that allows us to edit the movie properties of the database and display on the page
+function editMovie(buttonID) {
+    let editedMovieURL = `https://giddy-sapphire-english.glitch.me/movies/${buttonID}`;
+    const editOptions = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    fetch(editedMovieURL, editOptions)
+        .then((response) => {
+            // console.log(response);
+            refreshMovieData(response);
+            // console.log((response)); //we did this here so that we can refresh from the database each time
+        })
+        .catch(error => console.error(error));
+}
+
+$('#movie-table-1').on("click", "button.edit-btn", function () {
+    var buttonID = $(this).attr("data-id");
+    editMovie(buttonID);
+    // console.log(buttonID)
+});
