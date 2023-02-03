@@ -42,9 +42,10 @@ body {
 
 .delete-btn {
     border-radius: 0.5em;
-    color: rgb(192, 191, 191);
-    background-color: rgba(5, 5, 5, 0.5);
-    max-width: 90%;
+    color: rgb(17, 17, 17);
+    background-color: rgba(199, 197, 197, 0.74);
+    width: 3em;
+    height: 3em;
     margin: 0 auto;
 }
 
@@ -72,7 +73,8 @@ body {
     border-radius: 0.5em;
     color: rgb(17, 17, 17);
     background-color: rgba(199, 197, 197, 0.74);
-    max-width: 90%;
+    width: 3em;
+    height: 3em;
     margin: 0 auto;
 }
 
@@ -95,14 +97,15 @@ body {
     transition-property: transform, opacity;
 }
 
-.edit-btn:hover, .edit-btn:focus, .edit-btn:active {
+.edit-btn:hover {
     -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
     background-color: white;
     /* move the element up by 5px */
+    box-shadow: 0 10px 10px 0 rgba(238, 234, 234, 0.5),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.edit-btn:hover:before, .edit-btn:focus:before, .edit-btn:active {
+.edit-btn:active {
     opacity: 1;
     -webkit-transform: translateY(5px);
     transform: translateY(5px);
@@ -119,3 +122,12 @@ body {
     border: 2px solid black;
 }
 
+.edit-icon {
+    font-size: 2em;
+    color: black;
+}
+
+.delete-icon {
+    font-size: 2em;
+    color: black;
+}

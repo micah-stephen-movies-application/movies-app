@@ -31,11 +31,11 @@ function makeMovies() {
                         <div class="card-body d-flex flex-wrap flex-column justify-content-center">
                             <div class="row">
                                 <h3 class="card-title text-white text-center">${movies[i].title}</h3>
-                                <div class="card-text text-white text-center fs-4">${movies[i].rating} ★</div>
+                                <div class="card-text text-white text-center fs-4">Rating: ${movies[i].rating} ★</div>
                             </div>
-                            <div class="mt-auto row">
-                                <button class="edit-btn my-1" data-id="${movies[i].id}" data-bs-toggle="modal" data-bs-target="#editMovieModal">Edit</button>
-                                <button class="delete-btn my-1" data-id="${movies[i].id}">Delete</button>
+                            <div class="mt-auto d-flex">
+                                <button class="edit-btn" data-id="${movies[i].id}" data-bs-toggle="modal" data-bs-target="#editMovieModal"><i class="edit-icon fa-solid fa-pen-to-square"></i></button>
+                                <button class="delete-btn" data-id="${movies[i].id}"><i class="delete-icon fa-solid fa-trash"></i></button>
                             </div>
                         </div>
                     </div>`
