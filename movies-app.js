@@ -31,7 +31,10 @@ function makeMovies() {
                         <div class="card-body d-flex flex-wrap flex-column justify-content-center">
                             <div class="card-title text-white text-center">${movies[i].title}</div>
                             <div class="card-text text-white text-center">${movies[i].rating} ★</div>
-                            <button class="delete-btn mt-auto" data-id="${movies[i].id}">Delete</button>
+                            <div class="mt-auto row">
+                                <button class="edit-btn my-1" data-id="${movies[i].id}">Edit</button>
+                                <button class="delete-btn my-1" data-id="${movies[i].id}">Delete</button>
+                            </div>
                         </div>
                     </div>`
         $('#movie-table-1').html(movieHTML);

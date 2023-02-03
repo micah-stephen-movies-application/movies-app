@@ -42,6 +42,8 @@ body {
     border-radius: 0.5em;
     color: rgb(192, 191, 191);
     background-color: rgba(5, 5, 5, 0.5);
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 .delete-btn:before {
@@ -62,6 +64,46 @@ body {
 
 .delete-btn:hover {
     background-color: #9f0101;
+}
+
+.edit-btn {
+    border-radius: 0.5em;
+    color: rgb(17, 17, 17);
+    background-color: rgba(199, 197, 197, 0.74);
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.edit-btn:before {
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: 100%;
+    left: 5%;
+    height: 10px;
+    width: 90%;
+    opacity: 0;
+    background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 80%);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 80%);
+    /* W3C */
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.4s;
+    -webkit-transition-property: transform, opacity;
+    transition-property: transform, opacity;
+}
+
+.edit-btn:hover, .edit-btn:focus, .edit-btn:active {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    /* move the element up by 5px */
+}
+
+.edit-btn:hover:before, .edit-btn:focus:before, .edit-btn:active:before {
+    opacity: 1;
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+    /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 }
 
 .modal-content {
