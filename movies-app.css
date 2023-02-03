@@ -102,7 +102,7 @@ body {
     /* move the element up by 5px */
 }
 
-.edit-btn:hover:before, .edit-btn:focus:before, .edit-btn:active:before {
+.edit-btn:hover:before, .edit-btn:focus:before, .edit-btn:active {
     opacity: 1;
     -webkit-transform: translateY(5px);
     transform: translateY(5px);

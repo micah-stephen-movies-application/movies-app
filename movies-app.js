@@ -51,7 +51,6 @@ function addMovie() {
         rating: $("#add-movie-rating2").focus().val()
         // id: movies.length + 1 // we don't need this because Glitch sets the ID for me
     };
-
     const addedOptions = {
         method: 'POST',
         headers: {
@@ -106,23 +105,34 @@ $('#movie-table-1').on("click", "button.edit-btn", function () {
         }).then(function (data) {
             $('#edit-movie-name').val(data.title);
             $('#edit-movie-rating2').val(data.rating);
+            $('#submit-edit-movie').attr("data-id", buttonID);
     })
 });
 
+
 // function that allows us to edit the movie properties of the database and display on the page
-function editMovie(buttonID) {
-    let editedMovieURL = `https://giddy-sapphire-english.glitch.me/movies/${buttonID}`;
+function editMovie(buttonID2) {
+    let editedMovieURL = `https://giddy-sapphire-english.glitch.me/movies/${buttonID2}`;
+    const editedMovie = {
+        title:  $('#edit-movie-name').val(),
+        rating: $('#edit-movie-rating2').val()
+    }
     const editOptions = {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
+        body: JSON.stringify(editedMovie),
     };
     fetch(editedMovieURL, editOptions)
         .then(() => {
-            // console.log(response);
             refreshMovieData();
-            // console.log((response)); //we did this here so that we can refresh from the database each time
         })
         .catch(error => console.error(error));
 }
+
+$('#submit-edit-movie').click(function () {
+    var buttonID2 = $(this).attr("data-id");
+    editMovie(buttonID2);
+});
+
