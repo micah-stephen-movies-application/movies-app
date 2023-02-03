@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="movies-app.css">
 </head>
 <body>
+
 <header>
     <nav>
         <div class="d-flex flex-wrap justify-content-between">
@@ -18,7 +19,7 @@
             </button>
         </div>
         <!-- Modal for adding movies -->
-        <div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -55,14 +56,50 @@
         </div>
     </nav>
 </header>
-<main>
-    <div>
-        <div id="loading">
-            <img id="loading-image" src="loading-gif.gif" alt="Loading..."/>
-        </div>
 
-        <div id="movie-table-1" class="container d-flex flex-wrap justify-content-evenly"></div>
+<main>
+    <div id="editModal">
+        <div class="modal fade" id="editMovieModal" tabindex="-1" aria-labelledby="editModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="movieModalEdit">Edit A Movie!</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-edit-movie">
+                            <div class="text-center m-2">
+                                <label for="edit-movie-name">Title</label>
+                                <input id="edit-movie-name" type="text" class="form-control text-center"
+                                       placeholder="New Movie Title">
+                            </div>
+                            <div class="text-center m-2">
+                                <label for="edit-movie-rating2">New Rating on a scale from 1 to 10</label>
+                                <input id="edit-movie-rating2" type="text" class="form-control text-center"
+                                       placeholder="Movie Rating 1-10">
+                            </div>
+                            <div class="d-flex justify-content-center m-2">
+                                <button id="submit-edit-movie" type="button"
+                                        class="btn btn-warning add-your-movie-button">
+                                    Submit Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--                    <div class="modal-footer">-->
+                    <!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="loading"><img id="loading-image" src="loading-gif.gif" alt="Loading..."/></div>
+            <div id="movie-table-1" class="container d-flex flex-wrap justify-content-evenly"></div>
+        </div>
     </div>
+
 </main>
 <!--//JQUERY SCRIPTS-->
 <script src="https://code.jquery.com/jquery-3.6.3.js"

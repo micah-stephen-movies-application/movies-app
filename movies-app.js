@@ -34,7 +34,7 @@ function makeMovies() {
                                 <div class="card-text text-white text-center fs-4">${movies[i].rating} ★</div>
                             </div>
                             <div class="mt-auto row">
-                                <button class="edit-btn my-1" data-id="${movies[i].id}">Edit</button>
+                                <button class="edit-btn my-1" data-id="${movies[i].id}" data-bs-toggle="modal" data-bs-target="#editMovieModal">Edit</button>
                                 <button class="delete-btn my-1" data-id="${movies[i].id}">Delete</button>
                             </div>
                         </div>
@@ -69,7 +69,6 @@ function addMovie() {
 
 $('#submit-movie').click(() => {
     addMovie();
-    refreshMovieData();
 }); //added event listener to add to HTML on submit button
 
 
@@ -96,6 +95,7 @@ $('#movie-table-1').on("click", "button.delete-btn", function () {
     deleteMovie(buttonID);
 });
 
+
 //function that allows us to edit the movie properties of the database and display on the page
 // function editMovie(buttonID) {
 //     let editedMovieURL = `https://giddy-sapphire-english.glitch.me/movies/${buttonID}`;
@@ -113,10 +113,7 @@ $('#movie-table-1').on("click", "button.delete-btn", function () {
 //         })
 //         .catch(error => console.error(error));
 // }
-//
-//
-// $('#movie-table-1').on("click", "button.edit-btn", function () {
-//     var buttonID = $(this).attr("data-id");
-//     editMovie(buttonID);
-//     console.log(buttonID)
-// });
+
+$('#movie-table-1').on("click", "button.edit-btn", function () {
+    var buttonID = $(this).attr("data-id");
+});
