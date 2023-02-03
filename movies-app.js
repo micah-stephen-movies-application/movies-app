@@ -4,7 +4,7 @@ $(window).on('load', function () {
     $('#loading').hide();
 })
 
-const movieURL = "https://tulip-marsh-cake.glitch.me/movies";
+const movieURL = "https://giddy-sapphire-english.glitch.me/movies";
 //requests all data from the json database
 let movies = undefined;
 
@@ -26,11 +26,14 @@ refreshMovieData();
 function makeMovies() {
     var movieHTML = '';
     for (let i = 0; i < movies.length; i++) {
-        movieHTML += `<div>
-                        <div>${movies[i].title}</div>
-                        <div>${movies[i].rating}</div>
-                    </div>
-                        <button class="delete-btn" data-id="${movies[i].id}"> Delete Movie</button>`
+        movieHTML += `<div class="card movie-cards my-2 mx-2">
+                        <img src="" alt="" class="card-img-top">
+                        <div class="card-body d-flex flex-wrap flex-column justify-content-center">
+                            <div class="card-title text-white text-center">${movies[i].title}</div>
+                            <div class="card-text text-white text-center">${movies[i].rating} ★</div>
+                            <button class="delete-btn mt-auto" data-id="${movies[i].id}">Delete</button>
+                        </div>
+                    </div>`
         $('#movie-table-1').html(movieHTML);
     }
 }
@@ -39,8 +42,8 @@ function makeMovies() {
 function addMovie() {
     //created movie object based on user input
     const movieObj = {
-        title: $('#add-movie-name').focus().val(),
-        rating: $('#add-movie-rating2').focus().val(),
+        title: $("#add-movie-name").focus().val(),
+        rating: $("#add-movie-rating2").focus().val(),
         id: movies.length + 1
     };
 
@@ -52,9 +55,9 @@ function addMovie() {
         body: JSON.stringify(movieObj),
     };
     fetch(movieURL, addedOptions)
-        .then((response) => {
+        .then(() => {
             // console.log(response);
-            refreshMovieData(response); //we did this here so that we can refresh from the database each time
+            refreshMovieData(); //we did this here so that we can refresh from the database each time
         })
         .catch(error => console.error(error));
 }
@@ -64,7 +67,7 @@ $('#submit-movie').click(addMovie); //added event listener to add to HTML on sub
 
 //function that deletes the specified movie from the page
 function deleteMovie(buttonID) {
-    let deletedMovieURL = `https://tulip-marsh-cake.glitch.me/movies/${buttonID}`;
+    let deletedMovieURL = `https://giddy-sapphire-english.glitch.me/movies/${buttonID}`;
     const deleteOptions = {
         method: 'DELETE',
         headers: {
@@ -75,8 +78,8 @@ function deleteMovie(buttonID) {
     fetch(deletedMovieURL, deleteOptions)
         .then((response) => {
             // console.log(response);
-            refreshMovieData();
-            console.log((response)); //we did this here so that we can refresh from the database each time
+            refreshMovieData(response);
+            // console.log((response)); //we did this here so that we can refresh from the database each time
         })
         .catch(error => console.error(error));
 }
