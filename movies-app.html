@@ -12,6 +12,7 @@
 
 <header>
     <nav>
+<!--   Content of the navbar/header     -->
         <div class="d-flex flex-wrap justify-content-between">
             <div class="align-middle text-white m-4 fs-2">Welcome to ...</div>
             <button type="button" class="btn btn-warning m-4" data-bs-toggle="modal" data-bs-target="#addMovieModal">
@@ -48,9 +49,6 @@
                             </div>
                         </form>
                     </div>
-                    <!--                    <div class="modal-footer">-->
-                    <!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-                    <!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -58,6 +56,7 @@
 </header>
 
 <main>
+    <!-- modal for editing movies    -->
     <div id="editModal">
         <div class="modal fade" id="editMovieModal" tabindex="-1" aria-labelledby="editModalLabel"
              aria-hidden="true">
@@ -88,14 +87,13 @@
                             </div>
                         </form>
                     </div>
-                    <!--                    <div class="modal-footer">-->
-                    <!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-                    <!--                    </div>-->
                 </div>
             </div>
         </div>
         <div>
+<!--  loading image      -->
             <div id="loading"><img id="loading-image" src="loading-gif.gif" alt="Loading..."/></div>
+<!--      Div that contains all of of the movie cards      -->
             <div id="movie-table-1" class="container d-flex flex-wrap justify-content-evenly"></div>
         </div>
     </div>

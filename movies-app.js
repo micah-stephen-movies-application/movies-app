@@ -49,7 +49,7 @@ function addMovie() {
     const movieObj = {
         title: $("#add-movie-name").focus().val(),
         rating: $("#add-movie-rating2").focus().val()
-        // id: movies.length + 1 // we don't need this because
+        // id: movies.length + 1 // we don't need this because Glitch sets the ID for me
     };
 
     const addedOptions = {
@@ -96,24 +96,33 @@ $('#movie-table-1').on("click", "button.delete-btn", function () {
 });
 
 
-//function that allows us to edit the movie properties of the database and display on the page
-// function editMovie(buttonID) {
-//     let editedMovieURL = `https://giddy-sapphire-english.glitch.me/movies/${buttonID}`;
-//     const editOptions = {
-//         method: 'PATCH',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     };
-//     fetch(editedMovieURL, editOptions)
-//         .then((response) => {
-//             // console.log(response);
-//             refreshMovieData(response);
-//             // console.log((response)); //we did this here so that we can refresh from the database each time
-//         })
-//         .catch(error => console.error(error));
-// }
-
+//on click - this grabs the data from the card and inputs it into the modal
 $('#movie-table-1').on("click", "button.edit-btn", function () {
     var buttonID = $(this).attr("data-id");
+    let editedMovieURL = `https://giddy-sapphire-english.glitch.me/movies/${buttonID}`;
+    fetch(editedMovieURL)
+        .then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            $('#edit-movie-name').val(data.title);
+            $('#edit-movie-rating2').val(data.rating);
+    })
 });
+
+// function that allows us to edit the movie properties of the database and display on the page
+function editMovie(buttonID) {
+    let editedMovieURL = `https://giddy-sapphire-english.glitch.me/movies/${buttonID}`;
+    const editOptions = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    fetch(editedMovieURL, editOptions)
+        .then(() => {
+            // console.log(response);
+            refreshMovieData();
+            // console.log((response)); //we did this here so that we can refresh from the database each time
+        })
+        .catch(error => console.error(error));
+}
