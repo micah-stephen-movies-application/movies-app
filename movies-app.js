@@ -2,8 +2,9 @@
 //loading gif before page loads
 $(window).on('load', function () {
     $('#loading').hide();
-})
+});
 
+//movie url used from glitch to get the database
 const movieURL = "https://giddy-sapphire-english.glitch.me/movies";
 //requests all data from the json database
 let movies = undefined;
@@ -22,7 +23,7 @@ function refreshMovieData() {
 
 refreshMovieData();
 
-//this function is used to make the movies and display them on the page from the database
+//this function is used to make the movies from the existing database and display them on the page
 function makeMovies() {
     var movieHTML = '';
     for (let i = 0; i < movies.length; i++) {
@@ -61,7 +62,6 @@ function addMovie() {
     };
     fetch(movieURL, addedOptions)
         .then(() => {
-            // console.log(response);
             refreshMovieData(); //we did this here so that we can refresh from the database each time
         })
         .catch(error => console.error(error));
@@ -84,8 +84,6 @@ function deleteMovie(buttonID) {
     fetch(deletedMovieURL, deleteOptions)
         .then(() => {
             refreshMovieData();
-            // console.log(response);
-            // console.log((response)); //we did this here so that we can refresh from the database each time
         })
         .catch(error => console.error(error));
 }
@@ -93,6 +91,7 @@ function deleteMovie(buttonID) {
 $('#movie-table-1').on("click", "button.delete-btn", function () {
     var buttonID = $(this).attr("data-id");
     deleteMovie(buttonID);
+    console.log(buttonID);
 });
 
 
@@ -100,12 +99,14 @@ $('#movie-table-1').on("click", "button.delete-btn", function () {
 $('#movie-table-1').on("click", "button.edit-btn", function () {
     var buttonID = $(this).attr("data-id");
     let editedMovieURL = `https://giddy-sapphire-english.glitch.me/movies/${buttonID}`;
+    console.log(buttonID);
     fetch(editedMovieURL)
         .then(function (response) {
             return response.json();
         }).then(function (data) {
             $('#edit-movie-name').val(data.title);
             $('#edit-movie-rating2').val(data.rating);
+            //this sets the edited submit button's data id to whatever the button ID is so that we can use it again now that it has the same data-id attribute as the card we want to edit
             $('#submit-edit-movie').attr("data-id", buttonID);
     })
 });
