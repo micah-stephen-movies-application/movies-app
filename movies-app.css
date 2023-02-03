@@ -3,10 +3,18 @@ body {
 }
 
  header {
-     background-color: rgba(23, 23, 23, 0.85);
+     background-color: rgba(229, 227, 227, 0.85);
      border-radius: 0.15em;
      margin-bottom: 1em;
+     background-image: linear-gradient(to bottom, #262626, rgba(241, 167, 11, 0.24));
  }
+
+ /*hr {*/
+ /*    margin: 0 0 4px 0;*/
+ /*    border: 0;*/
+ /*    height: 4em;*/
+ /*    background-image: linear-gradient(to bottom, #262626, #f1a70b);*/
+ /*}*/
 
 #loading {
     position: fixed;
@@ -115,6 +123,10 @@ body {
 .edit-icon {
     font-size: 2em;
     color: black;
+}
+
+.header-image {
+    color: white;
 }
 
 .modal-content {
