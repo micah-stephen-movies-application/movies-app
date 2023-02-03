@@ -2,43 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movies Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css">
     <link rel="stylesheet" href="movies-app.css">
 </head>
 <body>
-<!--<div id="loading">-->
-<!--    <img id="loading-image" src="loading-gif.gif" alt="Loading..." />-->
-<!--</div>-->
-<div id="movie-table-1"></div>
-<div class="container">
-    <div id="add-movie" class="row p-0"></div>
-    <div class="container-fluid mx-0 p-2">
-        <h3 class="my-2 font-pacifico">Add Movie</h3>
-        <form id="form-add-movie" class="row g-3">
-            <!--				<label for="add-coffee-roast" class="form-label">Roast</label>-->
-            <div class="col-12 col-md-3 col-lg-2">
-                <label for="add-movie-name"></label>
-                <input id="add-movie-name" type="text" class="form-control" placeholder="Movie Name">
-            </div>
 
-            <div class="col-12 col-md-3 col-lg-2">
-                <label for="add-movie-rating2"></label>
-                <input id="add-movie-rating2" type="text" class="form-control" placeholder="Movie Rating 1-10">
+<header>
+    <nav>
+        <!--   Content of the navbar/header     -->
+        <div class="d-flex flex-wrap justify-content-between">
+            <div class="d-inline-flex justify-content-center">
+                <img src="2524043-200.png" alt="movie reel">
+                <div class="align-middle text-black m-4 fs-2 my-auto">Welcome to THE Movie</div>
             </div>
+            <button type="button" class="btn btn-warning m-4 add-movie-button my-auto" data-bs-toggle="modal" data-bs-target="#addMovieModal">Add A Movie</button>
+        </div>
+        <hr>
+        <!-- Modal for adding movies -->
+        <div class="modal fade" id="addMovieModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="movieModalLabel">Add A Movie!</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-add-movie">
 
-            <div class="col">
-                <button id="submit-movie" type="button" class="btn btn-light">submit movie</button>
+                            <div class="text-center m-2">
+                                <label for="add-movie-name">Title</label>
+                                <input id="add-movie-name" type="text" class="form-control text-center"
+                                       placeholder="Movie Title">
+                            </div>
+
+                            <div class="text-center m-2">
+                                <label for="add-movie-rating2">Rating on a scale from 1 to 10</label>
+                                <input id="add-movie-rating2" type="text" class="form-control text-center"
+                                       placeholder="Movie Rating 1-10">
+                            </div>
+
+                            <div class="d-flex justify-content-center m-2">
+                                <button id="submit-movie" type="button" class="btn btn-warning submit-your-added-movie-button">
+                                    Add Your Movie!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </form>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- modal for editing movies    -->
+    <div id="editModal">
+        <div class="modal fade" id="editMovieModal" tabindex="-1" aria-labelledby="editModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="movieModalEdit">Edit A Movie!</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-edit-movie">
+                            <div class="text-center m-2">
+                                <label for="edit-movie-name">Title</label>
+                                <input id="edit-movie-name" type="text" class="form-control text-center"
+                                       placeholder="New Movie Title">
+                            </div>
+                            <div class="text-center m-2">
+                                <label for="edit-movie-rating2">New Rating on a scale from 1 to 10</label>
+                                <input id="edit-movie-rating2" type="text" class="form-control text-center"
+                                       placeholder="Movie Rating 1-10">
+                            </div>
+                            <div class="d-flex justify-content-center m-2">
+                                <button id="submit-edit-movie" type="button"
+                                        class="btn btn-warning add-your-movie-button">
+                                    Submit Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <!--  loading image      -->
+            <div id="loading"><img id="loading-image" src="loading-gif.gif" alt="Loading..."/></div>
+            <!--      Div that contains all the movie cards      -->
+            <div id="movie-table-1" class="container d-flex flex-wrap justify-content-evenly"></div>
+        </div>
     </div>
-</div>
-<div class="d-none" style="text-align: center">
-    <button id="remove-local-storage" class="btn btn-warning">Delete Local Storage</button>
-</div>
+
+</main>
 <!--//JQUERY SCRIPTS-->
 <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>
 <script src="movies-app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
 </html>
+<!---->
