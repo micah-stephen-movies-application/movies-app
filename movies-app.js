@@ -11,6 +11,9 @@ let movies = undefined;
 
 //this function pulls the data from the database each time it is called
 function refreshMovieData() {
+    $(window).on('load', function () {
+        $('#loading').hide();
+    });
     fetch(movieURL)
         .then(function (response) {
             return response.json();
