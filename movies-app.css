@@ -3,11 +3,11 @@ body {
 }
 
  header {
-     background-color: rgba(236, 9, 9, 0.98);
+     background-color: rgba(236, 9, 9, 0.42);
      border-bottom: 4px solid black;
      border-radius: 0.15em;
      margin-bottom: 1em;
-     background-image: linear-gradient(to top, rgba(231, 160, 7, 0.57), rgba(234, 230, 222, 0.54));
+     background-image: linear-gradient(to top, rgba(231, 160, 7, 0.31), rgba(234, 230, 222, 0.54));
  }
 
  /*hr {*/
@@ -54,7 +54,7 @@ body {
 .delete-btn {
     border-radius: 0.5em;
     color: rgb(17, 17, 17);
-    background-color: rgb(245, 185, 18);
+    background-color: rgb(212, 211, 211);
     width: 3em;
     height: 3em;
     margin: 0 auto;
@@ -88,7 +88,7 @@ body {
 .edit-btn {
     border-radius: 0.5em;
     color: rgb(17, 17, 17);
-    background-color: rgb(245, 185, 18);
+    background-color: rgb(212, 211, 211);
     width: 3em;
     height: 3em;
     margin: 0 auto;
@@ -148,7 +148,7 @@ body {
     flex-wrap: wrap;
     width: 20em;
     height: 20em;
-    background-color: rgba(241, 25, 25, 0.43);
+    background-color: rgba(241, 25, 25, 0.27);
     background-image: linear-gradient(to top, rgba(231, 160, 7, 0.35), rgba(234, 230, 222, 0.54));
     border-radius: 0.75em;
     border: 2px solid black;

@@ -11,9 +11,6 @@ let movies = undefined;
 
 //this function pulls the data from the database each time it is called
 function refreshMovieData() {
-    $(window).on('load', function () {
-        $('#loading').hide();
-    });
     fetch(movieURL)
         .then(function (response) {
             return response.json();
@@ -35,7 +32,7 @@ function makeMovies() {
                         <div class="card-body d-flex flex-wrap flex-column justify-content-center">
                             <div class="row">
                                 <h3 class="card-title text-black text-center">${movies[i].title}</h3>
-                                <div class="card-text text-black text-center fs-4">Rating: ${movies[i].rating} ★</div>
+                                <div class="card-text text-black text-center fs-4">Rating: ${movies[i].rating}/10</div>
                                 <i class="fa-solid fa-ticket ticket text-center"></i>
                             </div>
                             <div class="mt-auto d-flex">
@@ -140,4 +137,15 @@ $('#submit-edit-movie').click(function () {
     var buttonID2 = $(this).attr("data-id");
     editMovie(buttonID2);
 });
+
+
+function getMovieAPIData () {
+    fetch()
+        .then(function (response) {
+            return response.json();
+        }) .then(function (data) {
+        console.log(data);
+    })
+}
+getMovieAPIData();
 
